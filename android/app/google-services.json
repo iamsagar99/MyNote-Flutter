@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "329546286991",
+    "project_id": "ebookreader-6007b",
+    "storage_bucket": "ebookreader-6007b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329546286991:android:9abd83a3fd826824ec2dfa",
+        "android_client_info": {
+          "package_name": "com.example.zippy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329546286991-6sr5qp15vn4c52tkks3vvrjngf6toj18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiRui9Y4jI8mkLj0t5zVt_qBkr-612YzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329546286991-6sr5qp15vn4c52tkks3vvrjngf6toj18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
