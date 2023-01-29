@@ -18,11 +18,17 @@ class _OurSignUpFormState extends State<OurSignUpForm> {
   TextEditingController _passwordController  = TextEditingController();
   TextEditingController _confirmPasswordController  = TextEditingController();
 
-  void _signUpUser(String email,String password,BuildContext context) async{
+  void _signUpUser(String email,String password,String fulName,BuildContext context) async{
     CurrentUser _currentuser = Provider.of<CurrentUser>(context,listen:false);
     try{
-      if(await _currentuser.SignUpUser(email,password)){
+      String _returnString = await _currentuser.SignUpUser(email,password,fulName);
+      if(_returnString == "success"){
         Navigator.pop(context);
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(_returnString),
+              duration:Duration(seconds: 2) ,)
+        );
       }
     }catch(e){
       print(e);
@@ -34,6 +40,7 @@ class _OurSignUpFormState extends State<OurSignUpForm> {
     return OurContainer(
       child: Column(
         children: <Widget>[
+
           Padding(padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 20.0),
             child: Text("Sign Up",style: TextStyle(
               color:Colors.black26,
@@ -56,7 +63,7 @@ class _OurSignUpFormState extends State<OurSignUpForm> {
                   SnackBar(content: Text("password match"),
                     duration:Duration(seconds: 2) ,)
               );
-              _signUpUser(_emailController.text,_passwordController.text, context);
+              _signUpUser(_emailController.text,_passwordController.text,_fulNameController.text, context);
             }else{
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text("Plesase use the valid email and  paassword>6"),
@@ -65,7 +72,7 @@ class _OurSignUpFormState extends State<OurSignUpForm> {
             }
           }, child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 100),
-            child: Text("Register",style: TextStyle(color: Colors.green, fontSize: 20.0,fontWeight: FontWeight.bold),),
+            child: Text("Register",style: TextStyle(color: Colors.white, fontSize: 15.0,fontWeight: FontWeight.bold),),
           )),
           TextButton(onPressed: (){
             Navigator.of(context).push(MaterialPageRoute(builder: (context)=>OurLogin()),);

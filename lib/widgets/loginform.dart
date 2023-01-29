@@ -23,7 +23,9 @@ class _OurLoginFormState extends State<OurLoginForm> {
     CurrentUser _currentuser = Provider.of<CurrentUser>(context,listen:false);
 
     try{
-      if(await _currentuser.LoginUser(email, password)){
+      String _returnString = await _currentuser.LoginUserWithEmail(email, password);
+
+      if(_returnString == "success"){
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context)=>ChangeNotifierProvider(
             create: ((context) => BookData()),
@@ -46,7 +48,7 @@ class _OurLoginFormState extends State<OurLoginForm> {
       }
       else{
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Invalid Credentials"),
+            SnackBar(content: Text("Invalid Credentials"+_returnString),
               duration:Duration(seconds: 2) ,)
         );
       }
@@ -70,20 +72,19 @@ class _OurLoginFormState extends State<OurLoginForm> {
           ),
           TextFormField(controller: _emailController,decoration: InputDecoration(prefixIcon: Icon(Icons.alternate_email), hintText: "Email"),),
           SizedBox(height: 20.0),
-          TextFormField(controller: _passwordController,decoration: InputDecoration(prefixIcon: Icon(Icons.lock_outline), hintText: "Password"),),
+          TextFormField(controller: _passwordController,decoration: InputDecoration(prefixIcon: Icon(Icons.lock_outline), hintText: "Password"),obscureText: true,),
           SizedBox(height: 20.0),
           ElevatedButton(onPressed: () {
 
             _loginUser(_emailController.text,_passwordController.text,context);
           }, child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 100),
-          child: Text("Login",style: TextStyle(color: Colors.green, fontSize: 20.0,fontWeight: FontWeight.bold),),
+          child: Text("Login",style: TextStyle(color: Colors.white, fontSize: 20.0,fontWeight: FontWeight.bold),),
           )),
           TextButton(onPressed: (){
             Navigator.of(context).push(MaterialPageRoute(builder: (context)=>OurSignUp()),);
           }, child: Text("Don't have an account? Sign Up here")
-          )
-
+          ),
         ],
       ),
     );

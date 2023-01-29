@@ -3,6 +3,9 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:zippy/pages/login/login.dart';
+import 'package:zippy/pages/root/root.dart';
+import 'package:zippy/states/currentUser.dart';
 import 'package:zippy/utils/book_view.dart';
 import 'package:zippy/pages/pdf_landing.dart';
 import 'package:zippy/pages/settings_page.dart';
@@ -81,12 +84,18 @@ class _HomeState extends State<Home> {
                     accountName: Text('NewUser'),
                     accountEmail: Text('userNew@email.com')),
                 ListTile(
-                  onTap: () {},
+                  onTap: () async {
+                    CurrentUser _currentUser = Provider.of<CurrentUser>(context,listen:false);
+                    String _returnString  =  await _currentUser.signOut();
+                    if(_returnString == "success"){
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> OurLogin()), (route) => false);
+                    }
+                  },
                   leading: Icon(
-                    Icons.info_outline_rounded,
+                    Icons.exit_to_app,
                     size: 25,
                   ),
-                  title: Text('About'),
+                  title: Text('Sign Out'),
                 ),
                 ListTile(
                   onTap: () {},

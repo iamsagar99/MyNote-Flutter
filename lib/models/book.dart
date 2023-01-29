@@ -7,6 +7,7 @@ class Book with ChangeNotifier {
   final String? thumbnailUrl;
   final String? description;
 
+
   Book(
       {required this.title,
       required this.author,

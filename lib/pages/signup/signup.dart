@@ -15,7 +15,8 @@ class OurSignUp extends StatelessWidget {
             padding: EdgeInsets.all(20.0),
             children: <Widget>[
                 BackButton(),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20.0,),
+                  SizedBox(height: 30,),
               OurSignUpForm()
             ],
           ))

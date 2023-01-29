@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OurTheme{
 
-  Color _lightGreen  = Color.fromARGB(255, 213, 235, 220);
+  Color _lightGreen  = Color.fromARGB(255, 255, 255, 255);
   Color _ligntGrey  = Color.fromARGB(255, 164, 164, 164);
   Color _darkerGrey  = Color.fromARGB(255, 119, 124, 135);
 
@@ -17,13 +17,13 @@ class OurTheme{
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
           borderSide: BorderSide(
-            color: _ligntGrey,
+            color: Colors.white,
           )
         ),
         focusedBorder:   OutlineInputBorder(
         borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(
-        color: _lightGreen,
+        color: Colors.black26,
         )
           )
 

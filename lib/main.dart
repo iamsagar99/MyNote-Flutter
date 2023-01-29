@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       create:(context)=> CurrentUser() ,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: OurTheme().buildTheme(),
+         theme: OurTheme().buildTheme(),
         home: OurLogin(),
       ),
     );
