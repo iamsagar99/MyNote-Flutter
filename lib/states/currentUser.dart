@@ -67,6 +67,10 @@ class CurrentUser extends ChangeNotifier{
     }
     return retVal;
   }
+
+
+
+
   Future<String>  LoginUserWithEmail(String email,String password) async {
     String retVal = "error";
 
@@ -79,6 +83,8 @@ class CurrentUser extends ChangeNotifier{
       _currentUser = await OurDatabase().getUserInfo(_authResult.user?.uid ?? '');
       if(_currentUser!=null){
         retVal = "success";
+        print("\n_____________________________________________________\n");
+        print(_currentUser);
       }
     }catch(e){
       print(e);
